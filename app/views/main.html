@@ -1,0 +1,13 @@
+<div class="col-sm-12 col-md-12 col-lg-12 project-container">
+    <project-summary ng-repeat="project in filteredData  | startFrom:currentPage*pageSize | limitTo:pageSize" project="project"
+        class="col-sm-12 col-md-6 summary" />
+</div>
+
+<ul class="col-sm-12 col-md-12 col-lg-12 pagination-list">
+    <li style="margin: 0 auto; text-align:center;" class="pagination-item">
+        <a ng-repeat="page in pages" style="display: inline-block" ng-class="$parent.currentPage==page ? 'btn-primary disabled' : 'btn-default'"
+            class="btn " ng-model="currentPage" ng-click="$parent.currentPage=page">
+        {{page+1}}
+        </a >
+    </li>
+  </ul>

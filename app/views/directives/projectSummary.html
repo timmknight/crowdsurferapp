@@ -1,0 +1,41 @@
+<div class="">
+	<div class="panel panel-primary ">
+		<div class="panel-heading">
+			<h3 class="panel-title">{{project.title}}</h3>
+		</div>
+		<div class="panel-body">
+			<h5>{{project.subtitle}}</h5>
+			<span>{{project.currency}}</span>
+			<span>{{project.description_summary}}...</span>
+			<div>
+				<p class="value">
+					<span ><strong>Raised:</strong><span ng-if="project.currency === 'GBP'"> £</span><span ng-if="project.currency === 'USD'"> $</span>{{project.raised}}</span>
+				</p>
+				<p class="value">
+					<span ><strong>Goal:</strong><span ng-if="project.currency === 'GBP'"> £</span><span ng-if="project.currency === 'USD'"> $</span>{{project.goal}}</span>
+				</p>
+				<p class="value">
+					<span  ng-if="project.goal > 0"><strong>Percentage:</strong> {{project.percentage}}%</span>
+				</p>
+				<div class="progress">
+					<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="project.raised" aria-valuemin="0" aria-valuemax="project.goal"
+						ng-style="{width: project.percentage}">
+						<span class="sr-only">{{project.percentage}} raised</span>
+					</div>
+				</div>
+			</div>
+			<div class="project-type">
+				<strong>Project Type:</strong>
+				<span ng-if="project.funding_type === 'R'">
+					Reward
+				</span>
+				<span ng-if="project.funding_type === 'E'">
+					Equity
+				</span>
+			</div>
+			<a class="btn btn-primary" ng-href="{{project.url}}" target="_blank">
+				Find out more
+			</a>
+		</div>
+	</div>
+</div>
