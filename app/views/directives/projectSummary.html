@@ -8,11 +8,12 @@
 			<span>{{project.currency}}</span>
 			<span>{{project.description_summary}}...</span>
 			<div>
+				<!--I've made the default £ as most of the porjects seem to have GBP-->
 				<p class="value">
-					<span ><strong>Raised:</strong><span ng-if="project.currency === 'GBP'"> £</span><span ng-if="project.currency === 'USD'"> $</span>{{project.raised}}</span>
+					<span><strong>Raised: {{project.raised | currency : '£' : 2}}</span>
 				</p>
 				<p class="value">
-					<span ><strong>Goal:</strong><span ng-if="project.currency === 'GBP'"> £</span><span ng-if="project.currency === 'USD'"> $</span>{{project.goal}}</span>
+					<span><strong>Goal: {{project.goal | currency : '£' : 2}}</span>
 				</p>
 				<p class="value">
 					<span  ng-if="project.goal > 0"><strong>Percentage:</strong> {{project.percentage}}%</span>

@@ -15,6 +15,7 @@ angular.module('crowdSurferApp')
     $scope.pageSize = 10;
     $scope.pages = [];
     $scope.numberOfPages;
+    
 
     projectDataService.get().then(function (response) {
       
@@ -23,11 +24,10 @@ angular.module('crowdSurferApp')
       $scope.numberOfPages = Math.ceil($scope.data.length / $scope.pageSize);
 
       for (var i = 0; i < response.data.length; i++) {
+        console.log(response.data[i]);
         $scope.filteredData.push(response.data[i]);        
         // mutate filteredData rather than the response
-        $scope.filteredData[i].percentage = Math.round((($scope.filteredData[i].raised / $scope.filteredData[i].goal) * 100));
-        $scope.filteredData[i].raised = $scope.filteredData[i].raised.toFixed(2);
-        $scope.filteredData[i].goal = $scope.filteredData[i].goal.toFixed(2);        
+        $scope.filteredData[i].percentage = Math.round((($scope.filteredData[i].raised / $scope.filteredData[i].goal) * 100));     
       }
       
       for (var n = 0; n <= $scope.numberOfPages - 1; n++) {
