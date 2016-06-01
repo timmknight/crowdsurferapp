@@ -26,12 +26,7 @@
 			</div>
 			<div class="project-type">
 				<strong>Project Type:</strong>
-				<span ng-if="project.funding_type === 'R'">
-					Reward
-				</span>
-				<span ng-if="project.funding_type === 'E'">
-					Equity
-				</span>
+				{{project.funding_type}}
 			</div>
 			<a class="btn btn-primary" ng-href="{{project.url}}" target="_blank">
 				Find out more
