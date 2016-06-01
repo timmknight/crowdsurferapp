@@ -16,11 +16,11 @@
 					<span><strong>Goal: {{project.goal | currency : '£' : 2}}</span>
 				</p>
 				<p class="value">
-					<span  ng-if="project.goal > 0"><strong>Percentage:</strong> {{project.percentage}}%</span>
+					<span><strong>Percentage:</strong> <span ng-if="project.goal > 0">{{project.percentage}}%</span><span ng-if="project.goal <= 0">0%</span></span>
 				</p>
 				<div class="progress">
 					<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="project.raised" aria-valuemin="0" aria-valuemax="project.goal"
-						ng-style="{width: project.percentage}">
+					ng-style="{width: project.percentage + '%'}">
 						<span class="sr-only">{{project.percentage}} raised</span>
 					</div>
 				</div>

@@ -3,6 +3,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+$border-color: #e5e5e5;
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -24,7 +26,7 @@ body {
 
 /* Custom page header */
 .header {
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid $border-color;
   margin-bottom: 10px;
 
   /* Make the masthead heading the same height as the navigation */
@@ -40,7 +42,7 @@ body {
 .footer {
   padding-top: 19px;
   color: #777;
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid $border-color;
 }
 
 .container-narrow > hr {
@@ -50,7 +52,7 @@ body {
 /* Main marketing message and sign up button */
 .jumbotron {
   text-align: center;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid $border-color;
 
   .btn {
     font-size: 21px;
@@ -112,4 +114,13 @@ div.progress {
 
 #title {
   padding-left: 10px;
+}
+
+.pagination-list {
+  margin: 0 auto; 
+  text-align:center;
+}
+
+div#page-size-dropdown .form-control{
+  width: auto  !important;
 }
