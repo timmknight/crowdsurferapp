@@ -1,16 +1,10 @@
-PL = !!!projectList
-<!--<div class="form-group" id="page-size-dropdown">
-            <label for="page-size">Page Size:</label>
-            <select class="form-control" id="page-size" ng-model="pageSize" ng-options="size as size for  size in pageSizeOptions" />
-
-        </div>
+<div class="form-group" id="page-size-dropdown">
+    <label for="page-size">Page Size:</label>
+    <select class="form-control" id="page-size" ng-model="pageSize" ng-options="size as size for  size in pageSizeOptions" />
+</div>
 <div class="col-sm-12 col-md-12 col-lg-12 project-container">
-    <project-summary ng-repeat="project in inputList | limitTo : pageSize : ((currentPage-1) * pageSize)" project="project" class="col-sm-12 col-md-6 summary"
-    />
+    <project-summary ng-repeat="project in data | limitTo : pageSize : ((currentPage-1) * pageSize)" project="project" class="col-sm-12 col-md-6 summary" />
     <div class="col-sm-12 col-md-12 col-lg-12 pagination-list">
-        <uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="pageSize"></uib-pagination>
-        
+        <uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="pageSize"></uib-pagination> 
     </div>
-</div>-->
-
-<div>TESTING</div>
+</div>

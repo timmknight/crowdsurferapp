@@ -29,21 +29,41 @@ angular.module('crowdSurferApp')
 
       $scope.data = response.data;
       $scope.totalItems = response.data.length;
-      $scope.numberOfPages = Math.ceil($scope.data.length / $scope.pageSize);
-
-      for (var i = 0; i < response.data.length; i++) {
-        $scope.filteredData.push(response.data[i]);
-        // mutate filteredData rather than the response
-        $scope.filteredData[i].percentage = Math.round((($scope.filteredData[i].raised / $scope.filteredData[i].goal) * 100));
-      }
+      $scope.numberOfPages = _.ceil($scope.data.length / $scope.pageSize);
       
+      var calcPercentage = function(project) {
+        if(project.goal > 0 && project.raised > 0) {
+          var divide = _.divide(project.raised, project.goal);
+          var percentage = _.multiply(divide, 100);
+          project.percentage = _.round(percentage, 2);
+        } else {
+          project.percentage = 0;          
+        }
+      $scope.filteredData.push(project)        
+      };
+      
+      _.map(response.data, calcPercentage);      
     });
   }])
 
-
+  .directive("projectList", function () {
+      return {
+        restrict: 'AE',
+        templateUrl: '../../views/directives/projectList.html',
+        scope: {
+          data: "=",
+          pageSize: "=",
+          currentPage: "=",
+          numberOfPages: "=",
+          pageSizeOptions: "=",
+          totalItems: "="
+        }
+      }
+    })
+  
   .directive("projectSummary", function () {
     return {
-      restrict: 'ACEM',
+      restrict: 'AE',
       templateUrl: '../../views/directives/projectSummary.html',
       scope: {
         project: "="
@@ -51,17 +71,6 @@ angular.module('crowdSurferApp')
     }
   })
   
-  // .directive("projectList", function () {
-  //   return {
-  //     restrict: 'ACEM',
-  //     templateUrl: '../../views/directives/projectList.html'
-  //     ,
-  //     scope: {
-  //       inputData: "="
-  //     }
-  //   }
-  // })
-
   .service('projectDataService', ['$http', function ($http) {
     var dataUrl = 'https://s3-eu-west-1.amazonaws.com/crowdsurfer-json-dumps/blockchain-projects.json';
     return {
