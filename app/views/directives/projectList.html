@@ -1,10 +1,39 @@
-<div class="form-group" id="page-size-dropdown">
-    <label for="page-size">Page Size:</label>
-    <select class="form-control" id="page-size" ng-model="pageSize" ng-options="size as size for  size in pageSizeOptions" />
-</div>
 <div class="col-sm-12 col-md-12 col-lg-12 project-container">
-    <project-summary ng-repeat="project in data | limitTo : pageSize : ((currentPage-1) * pageSize)" project="project" class="col-sm-12 col-md-6 summary" />
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <form class="form-inline">
+            <div class="form-group">
+                <label>
+                    Equity
+                </label>
+                <input ng-checked="fundingTypes.equity" ng-model="fundingTypes.equity" type="checkbox"/>
+            </div>
+            <div class="form-group">
+                <label>
+                    Reward
+                </label>
+                <input ng-checked="fundingTypes.reward" ng-model="fundingTypes.reward" type="checkbox"/>
+            </div>
+            <div class="form-group">
+                <label>
+                    Search:
+                </label>
+                <input ng-model="search.text"/>
+            </div>
+            <div class="form-group">
+                <label for="page-size">
+                    Page Size:
+                </label>
+                <select class="form-control" id="page-size" ng-model="pageSize" ng-options="size as size for  size in pageSizeOptions">
+                </select>
+            </div>
+        </form>
+        <div class="form-group ">
+        </div>
+    </div>
+    <project-summary class="col-sm-12 col-md-6 summary" ng-repeat="project in data | filter:search.text | test:fundingTypes | readableFundingType | limitTo : pageSize : ((currentPage-1) * pageSize)" project="project">
+    </project-summary>
     <div class="col-sm-12 col-md-12 col-lg-12 pagination-list">
-        <uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="pageSize"></uib-pagination> 
+        <uib-pagination items-per-page="pageSize" ng-model="currentPage" total-items="(data | filter:search.text | test:fundingTypes).length ">
+        </uib-pagination>
     </div>
 </div>

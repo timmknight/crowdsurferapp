@@ -69,6 +69,7 @@ body {
   }
 }
 
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
@@ -85,9 +86,13 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+
+  .form-group {
+    padding-right: 20px;
+  }
 }
 
-div.project-container > .summary:nth-child(2n-1) {
+div.project-container > .summary:nth-child(2n) {
    clear: both !important;
 }
 
@@ -119,8 +124,4 @@ div.progress {
 .pagination-list {
   margin: 0 auto; 
   text-align: center;
-}
-
-div#page-size-dropdown .form-control{
-  width: auto  !important;
 }
